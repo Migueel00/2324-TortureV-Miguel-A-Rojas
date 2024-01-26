@@ -17,6 +17,14 @@ export const ELEMENTS = {
     MURO:       "\u2B1C",
 }
 
+export const ELEMENTSNUMBERS = {
+    VACIO:      0,
+    MURO:       1,
+    PERSONAJE:  2,
+    ARAÑA:      3,
+    DINERO:     4
+}
+
 export const Key = {
     UP:     38,
     DOWN:   40,

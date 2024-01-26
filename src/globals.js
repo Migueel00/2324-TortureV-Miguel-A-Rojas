@@ -19,8 +19,9 @@ export default {
     //texto prueba
     txtPruebas: {},
 
-    // 
+    //  
     frameTimeObj: 0,
 
+    // events actions
     action: {}
 }

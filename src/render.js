@@ -28,6 +28,9 @@ function drawMap(level){
             if(level[i][k] === 1){
                 globals.ctx.fillText(ELEMENTS.MURO, 40 + k * 16, 50 + i * 16);
             }
+            if(level[i][k] === 2){
+                globals.ctx.fillText(ELEMENTS.PERSONAJE, 40 + k * 16, 50 + i * 16);
+            }
         }
     }
 

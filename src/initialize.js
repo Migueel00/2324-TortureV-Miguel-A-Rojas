@@ -1,6 +1,7 @@
 import globals from "./globals.js";
-import { Game, FPS } from "./constants.js";
+import { Game, FPS, ELEMENTS, ELEMENTSNUMBERS } from "./constants.js";
 import { keydownHandler, keyUpHandler } from "./Event.js";
+import { level } from "./level.js";
 
 
 function initHTMLelements(){
@@ -32,11 +33,20 @@ function initVars(){
 export {
     initHTMLelements,
     initVars,
-    initEvents
+    initEvents,
+    initGameScreenCharacters
+}
+
+function initGameScreenCharacters(){
+    initCharacter();
 }
 
 function initCharacter(){
+    const fila      = 7;
+    const columna   = 8;
+    const character = ELEMENTSNUMBERS.PERSONAJE;
 
+    level[fila][columna] = character;
 }
 
 function initEvents(){
@@ -44,3 +54,5 @@ function initEvents(){
     window.addEventListener("keydown", keydownHandler, false);
     window.addEventListener("keyup", keyUpHandler, false);
 }
+
+console.log(level);
