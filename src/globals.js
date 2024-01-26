@@ -29,5 +29,8 @@ export default {
     movementTimer: {},
 
     // puntuacion
-    points: {}
+    points: 0,
+
+    // vida
+    life: 0
 }

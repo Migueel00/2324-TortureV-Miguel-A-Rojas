@@ -1,7 +1,7 @@
 import globals from "./globals.js";
 import {ELEMENTS_NUMBERS, Game} from "./constants.js";
 import { level } from "./level.js";
-import { initMoney } from "./initialize.js";
+import { initMoney, initSpider } from "./initialize.js";
 
 
 export default function update(){
@@ -27,6 +27,7 @@ function playGame(){
     updateMovementTimer();
     characterMovement();
     updateMoney();
+    updateLife();
 }   
 
 function updateMovementTimer(){
@@ -46,7 +47,8 @@ function characterMovement(){
     const columna = searchCharacterInArray(ELEMENTS_NUMBERS.PERSONAJE).columna;
     const time = globals.movementTimer.value;
 
-   
+
+    if(time % 2 === 0){
         if(globals.action.moveUp && level[fila -1][columna] != 1){
             level[fila - 1][columna] = ELEMENTS_NUMBERS.PERSONAJE;
             level[fila][columna]     = ELEMENTS_NUMBERS.VACIO;
@@ -61,6 +63,8 @@ function characterMovement(){
             level[fila][columna]     = ELEMENTS_NUMBERS.VACIO;
         }
     
+    } 
+   
    
 }
 
@@ -95,8 +99,40 @@ function updateMoney(){
         initMoney();
         globals.points += 100;
     }
-
-
 }   
 
+function updateLife(){
+    let isCollision = true;
+
+    for(let i = 0; i < level.length; i++){
+        for(let k = 0; k < level[0].length; k++){
+            if(level[i][k] === ELEMENTS_NUMBERS.ARAÑA){
+                isCollision = false;           
+            }
+        }
+    }
+
+    if(isCollision){
+        resetCharacterPosition();
+        initSpider();
+        globals.life--;
+      
+    }
+
+    if(globals.life <= 0){
+        
+    }
+
+}
+
+
+function resetCharacterPosition(){
+
+    let fila = searchCharacterInArray(ELEMENTS_NUMBERS.PERSONAJE).fila;
+    let columna = searchCharacterInArray(ELEMENTS_NUMBERS.PERSONAJE).columna;
+
+    level[7][8] = ELEMENTS_NUMBERS.PERSONAJE;
+    level[fila][columna] = ELEMENTS_NUMBERS.VACIO;
+    
+}
 

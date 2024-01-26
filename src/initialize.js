@@ -31,12 +31,15 @@ function initVars(){
     }
 
     globals.points  = 0;
+
+    globals.life    = 3;
 }
 
 
 function initGameScreenCharacters(){
     initCharacter();
     initMoney();
+    initSpider();
 }
 
 function initCharacter(){
@@ -63,6 +66,26 @@ export function initMoney(){
    
 }
 
+export function initSpider(){
+    //border1 = level[1][1];  
+    // border2 = level[10][1];
+    // border3 = level[1][15];
+    // border4 = level[10][15];
+    const spider  = ELEMENTS_NUMBERS.ARAÑA;
+
+    const randomBorder = Math.floor(Math.random() * 4);
+    
+    if(randomBorder === 0){
+        level[1][1] = spider;
+    }else if(randomBorder === 1){
+        level[10][1] = spider;
+    }else if(randomBorder === 2){
+        level[1][15] = spider;
+    }else if(randomBorder === 3){
+        level[10][15] = spider;
+    }
+}
+
 function initEvents(){
 
     window.addEventListener("keydown", keydownHandler, false);
@@ -71,7 +94,7 @@ function initEvents(){
 
 function initTimers(){
 
-    globals.movementTimer = new Timer(0, 1);
+    globals.movementTimer = new Timer(0, 0,2);
 }
 
 export {
