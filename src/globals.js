@@ -26,5 +26,8 @@ export default {
     action: {},
 
     // movement timer
-    movementTimer: {}
+    movementTimer: {},
+
+    // puntuacion
+    points: {}
 }

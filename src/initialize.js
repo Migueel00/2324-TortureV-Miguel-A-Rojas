@@ -29,6 +29,8 @@ function initVars(){
         moveDown:   false,
         moveUp:     false
     }
+
+    globals.points  = 0;
 }
 
 

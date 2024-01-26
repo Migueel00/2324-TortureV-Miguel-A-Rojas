@@ -15,10 +15,15 @@ export default function render(){
 }
 
 function drawGame(){
-    globals.ctx.font  = "14px Emulogic";
+    const score  = globals.points;
 
     globals.ctx.clearRect(0, 0, globals.canvas.width, globals.canvas.height);
-
+    globals.ctx.font  = "12px Emulogic";
+    globals.ctx.fillStyle = "#fff";
+    globals.ctx.fillText("SCORE" , 35, 20);
+    
+    globals.ctx.fillText("" + score, globals.canvas.width / 2, 20);
+    globals.ctx.font = "14px Emulogic";
     drawMap(level);
 }
 
@@ -26,13 +31,13 @@ function drawMap(level){
     for(let i = 0; i < level.length; i++){
         for(let k = 0; k < level[0].length; k++){
             if(level[i][k] === 1){
-                globals.ctx.fillText(ELEMENTS.MURO, 40 + k * 16, 50 + i * 16);
+                globals.ctx.fillText(ELEMENTS.MURO, 35 + k * 16, 50 + i * 16);
             }
             if(level[i][k] === 2){
-                globals.ctx.fillText(ELEMENTS.PERSONAJE, 40 + k * 16, 50 + i * 16);
+                globals.ctx.fillText(ELEMENTS.PERSONAJE, 35 + k * 16, 50 + i * 16);
             }
             if(level[i][k] === 4){
-                globals.ctx.fillText(ELEMENTS.DINERO, 40 + k * 16, 50 + i * 16);
+                globals.ctx.fillText(ELEMENTS.DINERO, 35 + k * 16, 50 + i * 16);
             }
         }
     }

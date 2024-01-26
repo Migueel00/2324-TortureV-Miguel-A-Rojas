@@ -93,6 +93,7 @@ function updateMoney(){
 
     if(isMoney){
         initMoney();
+        globals.points += 100;
     }
 
 
