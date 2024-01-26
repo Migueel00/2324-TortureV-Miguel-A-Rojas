@@ -1,7 +1,8 @@
 import globals from "./globals.js";
-import { Game, FPS, ELEMENTS, ELEMENTSNUMBERS } from "./constants.js";
+import { Game, FPS, ELEMENTS, ELEMENTS_NUMBERS } from "./constants.js";
 import { keydownHandler, keyUpHandler } from "./Event.js";
 import { level } from "./level.js";
+import Timer from "./Timer.js";
 
 
 function initHTMLelements(){
@@ -30,23 +31,34 @@ function initVars(){
     }
 }
 
-export {
-    initHTMLelements,
-    initVars,
-    initEvents,
-    initGameScreenCharacters
-}
 
 function initGameScreenCharacters(){
     initCharacter();
+    initMoney();
 }
 
 function initCharacter(){
     const fila      = 7;
     const columna   = 8;
-    const character = ELEMENTSNUMBERS.PERSONAJE;
+    const character = ELEMENTS_NUMBERS.PERSONAJE;
 
     level[fila][columna] = character;
+}
+
+export function initMoney(){
+    const money  = ELEMENTS_NUMBERS.DINERO;
+    const filas   = level.length;
+    const columna = level[0].length;
+    while(true){
+        const filaAleatoria     = Math.floor(Math.random() * filas);
+        const columnaAleatoria  = Math.floor(Math.random() * columna);
+
+        if(level[filaAleatoria][columnaAleatoria] === 0){
+            level[filaAleatoria][columnaAleatoria] = money;
+            break;
+        }
+    }
+   
 }
 
 function initEvents(){
@@ -55,4 +67,15 @@ function initEvents(){
     window.addEventListener("keyup", keyUpHandler, false);
 }
 
-console.log(level);
+function initTimers(){
+
+    globals.movementTimer = new Timer(0, 1);
+}
+
+export {
+    initHTMLelements,
+    initVars,
+    initEvents,
+    initGameScreenCharacters,
+    initTimers
+}

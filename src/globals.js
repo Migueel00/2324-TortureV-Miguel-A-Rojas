@@ -23,5 +23,8 @@ export default {
     frameTimeObj: 0,
 
     // events actions
-    action: {}
+    action: {},
+
+    // movement timer
+    movementTimer: {}
 }

@@ -1,5 +1,5 @@
 import globals from "./globals.js";
-import { initHTMLelements, initVars,  initEvents, initGameScreenCharacters} from "./initialize.js";
+import { initHTMLelements, initVars,  initEvents, initGameScreenCharacters, initTimers} from "./initialize.js";
 import update from "./update.js";
 import render from "./render.js";
 
@@ -22,6 +22,9 @@ function init(){
 
     //init characters
     initGameScreenCharacters();
+
+    // init timers
+    initTimers();
 
 }
 

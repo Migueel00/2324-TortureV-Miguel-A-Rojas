@@ -17,7 +17,7 @@ export const ELEMENTS = {
     MURO:       "\u2B1C",
 }
 
-export const ELEMENTSNUMBERS = {
+export const ELEMENTS_NUMBERS = {
     VACIO:      0,
     MURO:       1,
     PERSONAJE:  2,
